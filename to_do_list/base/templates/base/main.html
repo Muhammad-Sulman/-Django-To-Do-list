@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Protest Riot', sans-serif;
+            padding: 30px;
+            font-size: large;
+            box-sizing: border-box;
+        }
+        .main{
+            max-width: 1080px;
+            margin: auto;
+            background-color: antiquewhite;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .header{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+            /* background-color: #FBAB7E; */
+            background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+        }
+        
+        .task-wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #FBAB7E 0%;
+            padding: 20px;
+            border-top: 1px solid #8d3503;
+        }
+
+        .task-title{
+            display: flex;
+        }
+
+        .task-title a{
+            text-decoration: none;
+            color: #8d3503;
+            margin-left: 10px;
+        }
+
+        .task-complete-icon{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgb(105, 192, 105);
+        }
+
+        .task-incomplete-icon{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #F7CE68;
+        }
+
+        .delete-link{
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 52px;
+            color: #cf4949;
+            line-height: 0;
+        }
+
+        #search-add-wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        #add-link{
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 52px;
+            padding-right: 20px;
+            color: #F7CE68;
+            text-shadow: 1px 1px #af4203;
+        }
+
+        input[type=text],
+        input[type=password],
+        textarea{
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #8d3503;
+            border-radius: 5px;
+            
+        }
+
+        label{
+            display: block;
+            padding-top: 10px !important;
+        }
+
+        .button{
+            background-color: #F7CE68;
+            border: 1px solid #8d3503;
+            color: #8d3503;
+            text-decoration: none;
+            padding: 10px;
+            margin-left: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card-body{
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <section class="main">
+        {% block container %}
+            
+        {% endblock container %} 
+    </section>
+</body>
+</html>

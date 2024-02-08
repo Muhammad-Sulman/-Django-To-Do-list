@@ -1,0 +1,78 @@
+{% extends 'base/main.html' %}
+{% block container %}
+
+<div class="header">
+    <div>
+        <h1>Hello {{request.user|title}}</h1>
+        <h3>You have <i>{{count}} </i>incomplete task{{count|pluralize:'s'}}</h3>
+    </div>
+{% if request.user.is_authenticated  %}
+<!-- <p>{request.user}</p> -->
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'login' %}?next=/login">Login</a>
+<!-- <form method="post" action="{ url 'logout' %}">
+    { csrf_token %}
+    <button type="submit">Logout</button>
+</form> -->
+{% endif %}
+</div>
+<!-- <hr> -->
+
+
+<div id="search-add-wrapper">
+    <form method="get" style="margin-top: 10px; display: flex;">
+        <input type="text" name="search-area" value="{{search_input}}">
+        <input class="button" type="submit" value="Search">
+    </form> 
+    <a id="add-link" href=" {% url 'task-create' %} ">&#x2b</a>
+</div>
+
+
+<div class="task-items-wrapper">
+    {% for task in tasks %}
+    <div class="task-wrapper">
+        {% if task.complete %}
+            <div class="task-title">
+                <div class="task-complete-icon"></div>
+                <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i>
+            </div>
+            <a  href="{% url 'task-delete' task.id %}" class="delete-link">&#215</a>
+        {% else %}
+        <div class="task-title">
+            <div class="task-incomplete-icon"></div>
+            <a href="{% url 'task-update' task.id %}">{{task}}</a>
+        </div> 
+        <a  href="{% url 'task-delete' task.id %}" class="delete-link">&#215</a>           
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+
+
+<!-- <table>
+    <tr>
+        <th>Item</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    // { for task in object_list } by default queryset name is object_list but changed it to tasks for readability 
+    { for task in tasks }
+    
+    <tr>
+        // because task is list from object_list we use task.tittle 
+        <td>{task.tittle}}</td>
+        // <td><a href="{ url 'task' task.id }">View</a></td> 
+        <td><a href="{ url 'task-update' task.id %}">Edit</a></td>
+        <td><a href="{ url 'task-delete' task.id %}">Delete</a></td>
+    </tr>
+    // built in condition check if list etc is empty or not  
+    { empty %}
+        <h3>No items in List</h3>
+    
+    { endfor %}
+</table> -->
+
+{% endblock container %}
